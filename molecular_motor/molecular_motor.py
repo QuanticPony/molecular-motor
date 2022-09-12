@@ -12,7 +12,7 @@ class molecular_motor:
         self.motor_heads[0].position[0] = 0.3
         self.integrator = verlet_integrator(0.01, 70, 2)
         self.iteration = 0
-        self.Periode = 2000
+        self.period = 2000
         self._potential_offset = 1
         
     def prepare_canvas(self, steps_per_frame=40, frames_per_second=5):
@@ -46,9 +46,9 @@ class molecular_motor:
     
     def plot_state(self):
         for _ in range(self.steps_per_frame):
-            self.iteration = (self.iteration + 1) if self.iteration<self.Periode else 0
-            first_head_potential = (self.iteration<(self.Periode/2))
-            second_head_potential = ((self.Periode/2)<=self.iteration)
+            self.iteration = (self.iteration + 1) if self.iteration<self.period else 0
+            first_head_potential = (self.iteration<(self.period/2))
+            second_head_potential = ((self.period/2)<=self.iteration)
             self.integrator(self.motor_heads, np.array([first_head_potential, second_head_potential]))
         
         mean = sum(self.get_x_position())/2

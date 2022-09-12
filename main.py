@@ -3,7 +3,7 @@ from molecular_motor import molecular_motor
     
 if __name__=='__main__':
     sim = molecular_motor()
-    sim.Periode = 2000
+    sim.period = 2000
     sim.length_potential = 0.5
     sim.low_point_potential = 0.45
     sim.potential_offset = 0.25
